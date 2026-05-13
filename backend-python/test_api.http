@@ -1,0 +1,85 @@
+POST http://127.0.0.1:5000/student/register
+Content-Type: application/json
+
+{
+  "name": "Rahul",
+  "email": "rahul@gmail.com",
+  "password": "1234",
+  "branch": "CSE",
+  "semester": 6,
+  "mentor_email": "mentor@college.com"
+}
+###
+POST http://127.0.0.1:5000/student/login
+Content-Type: application/json
+
+{
+  "email": "rahul@gmail.com",
+  "password": "1234"
+}
+###
+POST http://127.0.0.1:5000/timetable/add
+Content-Type: application/json
+
+{
+  "student_id": 1,
+  "day": "Monday",
+  "subject": "Data Structures",
+  "start_time": "09:00",
+  "end_time": "10:00"
+}
+###
+POST http://127.0.0.1:5000/leave/apply
+Content-Type: application/json
+
+{
+  "student_id": 1,
+  "from_date": "2026-05-11",
+  "to_date": "2026-05-12",
+  "reason": "Medical leave"
+}
+###
+POST http://127.0.0.1:5000/student/register
+Content-Type: application/json
+
+{
+  "name": "Tasmiya khanum",
+  "email": "tasmiyakhanum274@gmail.com",
+  "password": "123456",
+  "branch": "CSE",
+  "semester": 4,
+  "mentor_email": "khanumtasmiya189@gmail.com"
+}
+###
+POST http://127.0.0.1:5000/student/register
+Content-Type: application/json
+{
+  "name": "Varsha DK",
+  "email": "varshadk@gmail.com",
+  "password": "123456",
+  "branch": "CSE",
+  "semester": 4,
+  "mentor_email": "khanumtasmiya189@gmail.com"
+}
+###
+POST http://127.0.0.1:5000/student/register
+Content-Type: application/json
+{
+  "name": "Renuka venkatesh lingaraddi",
+  "email": "renukavenkateshlingaraddi@gmail.com",
+  "password": "123456",
+  "branch": "CSE",
+  "semester": 4,
+  "mentor_email": "khanumtasmiya189@gmail.com"
+}
+###
+POST http://127.0.0.1:5000/student/register
+Content-Type: application/json
+{
+  "name": "spoorthi m ",
+  "email": "spoorthim@gmail.com",
+  "password": "123456",
+  "branch": "CSE",
+  "semester": 4,
+  "mentor_email": "khanumtasmiya189@gmail.com"
+}
