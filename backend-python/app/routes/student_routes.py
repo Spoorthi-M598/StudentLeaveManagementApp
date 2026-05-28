@@ -45,3 +45,25 @@ def login_student():
         "student_id": student.id,
         "name": student.name
     }), 200
+@student_bp.route("/<int:student_id>", methods=["GET"])
+def get_student(student_id):
+
+    student = Student.query.get(student_id)
+
+    if not student:
+        return jsonify({
+            "message": "Student not found"
+        }), 404
+
+    return jsonify({
+        "id": student.id,
+        "name": student.name,
+        "email": student.email,
+        "mentor_email": student.mentor_email,
+        "usn": student.usn,
+        "course": student.course,
+        "section": student.section,
+        "blood_group": student.blood_group,
+        "address": student.address,
+        "emergency_contact": student.emergency_contact
+    }), 200

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'colors.dart';
 
 class AppTheme {
@@ -11,7 +11,7 @@ class AppTheme {
       seedColor: AppColors.primary,
     ),
 
-    textTheme: GoogleFonts.poppinsTextTheme(),
+    fontFamily: 'Roboto',
 
     inputDecorationTheme: InputDecorationTheme(
       filled: true,

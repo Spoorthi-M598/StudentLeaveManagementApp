@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'screens/login_screen.dart';
 import 'utils/theme.dart';
-import 'screens/home_screen.dart';
+
 
 
 void main() {
@@ -17,7 +17,7 @@ class LeaveApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Leave Management',
       theme: AppTheme.lightTheme,
-     home: const HomeScreen(),
+     home: const LoginScreen(),
       
     );
   }

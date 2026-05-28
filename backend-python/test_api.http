@@ -1,3 +1,4 @@
+###
 POST http://127.0.0.1:5000/student/register
 Content-Type: application/json
 
@@ -28,16 +29,7 @@ Content-Type: application/json
   "start_time": "09:00",
   "end_time": "10:00"
 }
-###
-POST http://127.0.0.1:5000/leave/apply
-Content-Type: application/json
 
-{
-  "student_id": 1,
-  "from_date": "2026-05-11",
-  "to_date": "2026-05-12",
-  "reason": "Medical leave"
-}
 ###
 POST http://127.0.0.1:5000/student/register
 Content-Type: application/json
@@ -53,33 +45,50 @@ Content-Type: application/json
 ###
 POST http://127.0.0.1:5000/student/register
 Content-Type: application/json
+
 {
-  "name": "Varsha DK",
-  "email": "varshadk@gmail.com",
+  "name": "Rahul Sharma",
+  "email": "rahul1@gmail.com",
   "password": "123456",
   "branch": "CSE",
   "semester": 4,
-  "mentor_email": "khanumtasmiya189@gmail.com"
+  "mentor_email": "mentor@gmail.com"
 }
+
 ###
+
 POST http://127.0.0.1:5000/student/register
 Content-Type: application/json
+
 {
-  "name": "Renuka venkatesh lingaraddi",
-  "email": "renukavenkateshlingaraddi@gmail.com",
+  "name": "Priya Singh",
+  "email": "priya1@gmail.com",
   "password": "123456",
-  "branch": "CSE",
-  "semester": 4,
-  "mentor_email": "khanumtasmiya189@gmail.com"
+  "branch": "ISE",
+  "semester": 3,
+  "mentor_email": "mentor@gmail.com"
 }
+
 ###
+
 POST http://127.0.0.1:5000/student/register
 Content-Type: application/json
+
 {
-  "name": "spoorthi m ",
-  "email": "spoorthim@gmail.com",
+  "name": "Arjun Patel",
+  "email": "arjun1@gmail.com",
   "password": "123456",
-  "branch": "CSE",
-  "semester": 4,
-  "mentor_email": "khanumtasmiya189@gmail.com"
+  "branch": "ECE",
+  "semester": 5,
+  "mentor_email": "mentor@gmail.com"
+}
+###
+POST http://127.0.0.1:5000/leave/apply
+Content-Type: application/json
+
+{
+  "student_id": 1,
+  "from_date": "2026-05-20",
+  "to_date": "2026-05-22",
+  "reason": "Medical Leave"
 }

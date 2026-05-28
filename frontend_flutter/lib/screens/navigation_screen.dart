@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 
-import 'history_screen.dart';
 import 'dashboard_screen.dart';
 import 'apply_leave_screen.dart';
-import 'profile_screen.dart';
 import 'student_attendance.dart';
+import 'history_screen.dart';
+import 'profile_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({
+class NavigationScreen
+    extends StatefulWidget {
+
+  const NavigationScreen({
     super.key,
   });
 
   @override
-  State<HomeScreen> createState() =>
-      _HomeScreenState();
+  State<NavigationScreen>
+      createState() =>
+          _NavigationScreen();
 }
 
-class _HomeScreenState
-    extends State<HomeScreen> {
+class _NavigationScreen
+    extends State<
+        NavigationScreen> {
 
   int currentIndex = 0;
 
@@ -40,7 +44,8 @@ class _HomeScreenState
 
     return Scaffold(
 
-      body: pages[currentIndex],
+      body: pages[
+          currentIndex],
 
       bottomNavigationBar:
           BottomNavigationBar(
@@ -51,13 +56,6 @@ class _HomeScreenState
 
         currentIndex:
             currentIndex,
-
-        selectedItemColor:
-            const Color(
-                0xFF3F51B5),
-
-        unselectedItemColor:
-            Colors.grey,
 
         onTap: (index) {
 
