@@ -2,23 +2,30 @@ from app.config.db import db
 
 
 class Leave(db.Model):
-    __tablename__ = "leaves"
 
-    id = db.Column(db.Integer, primary_key=True)
+    __tablename__ = "leave"
 
-
-    student_id = db.Column(
+    id = db.Column(
         db.Integer,
-        db.ForeignKey("students.id"),
-        nullable=False
+        primary_key=True
     )
 
-    from_date = db.Column(db.Date, nullable=False)
+    leave_type = db.Column(
+        db.String(100)
+    )
 
-    to_date = db.Column(db.Date, nullable=False)
+    start_date = db.Column(
+        db.String(50)
+    )
 
-    reason = db.Column(db.String(255), nullable=False)
+    end_date = db.Column(
+        db.String(50)
+    )
 
-    status = db.Column(db.String(20), default="pending")
+    reason = db.Column(
+        db.String(500)
+    )
 
-    applied_at = db.Column(db.DateTime, server_default=db.func.now())
+    status = db.Column(
+        db.String(50)
+    )

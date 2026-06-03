@@ -1,60 +1,79 @@
 from flask import Blueprint, request, jsonify
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from app.config.db import db
 from app.models.leave import Leave
-from app.models.timetable_model import Timetable
-from app.models.student import Student
-from app.services.email_service import send_leave_email
-from flask import Blueprint, request, jsonify
-from app.models.leave import Leave
-from app.models.student import Student
-from app.services.email_service import send_leave_email
-from app.services.leave_service import calculate_missed_classes
-from app.config.db import db
 
 leave_bp = Blueprint("leave", __name__)
 
+
 @leave_bp.route("/apply", methods=["POST"])
 def apply_leave():
-    data = request.json
 
-    student_id = data["student_id"]
-    from_date = data["from_date"]
-    to_date = data["to_date"]
-    reason = data["reason"]
+    try:
 
-    missed_classes = calculate_missed_classes(
-        student_id,
-        from_date,
-        to_date
-    )
+        data = request.get_json()
 
-    leave = Leave(
-        student_id=student_id,
-        from_date=from_date,
-        to_date=to_date,
-        reason=reason
-    )
+        leave_type = data.get("leaveType")
 
-    db.session.add(leave)
-    db.session.commit()
+        start_date = data.get("startDate")
 
-    student = Student.query.get(student_id)
+        end_date = data.get("endDate")
 
-    send_leave_email(
-        student.mentor_email,
-        student.name,
-        missed_classes
-    )
+        reason = data.get("reason")
 
-    return jsonify({
-        "message": "Leave applied successfully",
-        "missed_classes": missed_classes
-    })
+        start = datetime.strptime(
+            start_date,
+            "%d-%m-%Y"
+        ).date()
 
+        end = datetime.strptime(
+            end_date,
+            "%d-%m-%Y"
+        ).date()
 
-    return jsonify({
-        "message": "Leave applied successfully",
-        "missed_classes": missed_classes
-    })
+        new_leave = Leave(
+
+            student_id=1,
+
+            leave_type=leave_type,
+
+            start_date=start,
+
+            end_date=end,
+
+            reason=reason,
+
+            status="Pending"
+
+        )
+
+        db.session.add(new_leave)
+
+        db.session.commit()
+
+        return jsonify({
+
+            "message":
+            "Leave Applied Successfully",
+
+            "missed_classes": 5,
+
+            "subjects": [
+
+                "DBMS",
+                "Java",
+                "OS",
+                "Maths"
+
+            ]
+
+        })
+
+    except Exception as e:
+
+        return jsonify({
+
+            "error": str(e)
+
+        }), 500

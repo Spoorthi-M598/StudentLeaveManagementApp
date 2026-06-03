@@ -29,19 +29,25 @@ def register_student():
 @student_bp.route("/login", methods=["POST"])
 def login_student():
     data = request.json
+    # Support login by USN (used by the Flutter frontend).
+    usn = data.get("usn")
 
-    student = Student.query.filter_by(
-        email=data["email"],
-        password=data["password"]
-    ).first()
+    if usn:
+        student = Student.query.filter_by(usn=usn).first()
 
-    if not student:
+        if not student:
+            return jsonify({
+                "success": False,
+                "message": "Invalid USN"
+            }), 401
+
         return jsonify({
-            "message": "Invalid email or password"
-        }), 401
+            "success": True,
+            "student_name": student.student_name,
+            "current_sem": student.current_sem
+        }), 200
 
     return jsonify({
-        "message": "Login successful",
-        "student_id": student.id,
-        "name": student.name
-    }), 200
+        "success": False,
+        "message": "USN is required"
+    }), 400

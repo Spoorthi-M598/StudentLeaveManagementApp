@@ -6,19 +6,25 @@ class ApiService {
   static const String baseUrl = "http://10.0.2.2:5000";
 
   static Future<bool> applyLeave({
-    required int studentId,
+    required String leaveType,
+    required String startDate,
+    required String endDate,
+    required int days,
     required String reason,
   }) async {
 
     final response = await http.post(
-      Uri.parse("$baseUrl/apply-leave"),
+      Uri.parse("$baseUrl/leave/apply"),
 
       headers: {
         "Content-Type": "application/json",
       },
 
       body: jsonEncode({
-        "student_id": studentId,
+        "leaveType": leaveType,
+        "startDate": startDate,
+        "endDate": endDate,
+        "days": days,
         "reason": reason,
       }),
     );
